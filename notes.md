@@ -227,6 +227,13 @@ Uses the same unique methods as a queue described above
 * If you wish to shrink the capacity you just do the reverse process
 * The new inner array has the same methods and pros/cons as a static array
 
+* Use ArrayList class for dynamic arrays
+    * Within the class there are a few defined members
+        * DEFAULT_CAPACITY = 10;
+            * default inital capacity if you do not set one
+        * Size
+            * Keeps track of how many elements are filled inside the array list
+
 ## Advantages 
 1. Random access of elements,  O(1) - constant time
     * Thanks to indexing
