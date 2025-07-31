@@ -38,18 +38,56 @@ public class DynamicArrayClass {
 
     public void delete(Object data) {
         
+        for (int i = 0; i < size; i++) {
+            if (array[i] == data) {
+                for(int j = 0; j < (size - i - 1); j++) {   // shifts elements 1 spot to the left
+                    array[i+ j] = array[i + j + 1];
+                }
+                array[size -1] = null;
+                size--;
+                if(size <= (int)(capacity/3)) {
+                    shrink();
+                }
+                break;
+            }
+        }
     }
 
     public int search(Object data) {
-        return -1;
+        
+        for (int i = 0; i < size; i++) {
+            if(array[i] == data) {
+                return i;
+            }
+
+        }
+        return -1; 
     }
 
     private void grow() {   // expand the size of the array
         
+        int newCapacity = (int)(capacity * 2);
+        Object[] newArray = new Object[newCapacity];
+
+        // copy elements to new array
+        for(int i = 0; i < size; i++) {
+            newArray[i] = array[i];
+        }
+        capacity = newCapacity;
+        array = newArray;
     }
 
     private void shrink() {
 
+        int newCapacity = (int)(capacity / 2);
+        Object[] newArray = new Object[newCapacity];
+
+        // copy elements to new array
+        for(int i = 0; i < size; i++) {
+            newArray[i] = array[i];
+        }
+        capacity = newCapacity;
+        array = newArray;
     }
 
     public boolean isEmpty() {
